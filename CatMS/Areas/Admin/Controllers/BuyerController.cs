@@ -2,8 +2,9 @@
 using CatMS.Repositorys;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CatMS.Controllers
+namespace CatMS.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class BuyerController : Controller
     {
         private readonly IBuyerRepository _buyerRepository;

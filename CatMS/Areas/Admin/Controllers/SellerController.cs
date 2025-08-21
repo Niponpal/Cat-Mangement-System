@@ -3,8 +3,9 @@ using CatMS.Models;
 using CatMS.Repositorys;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CatMS.Controllers
+namespace CatMS.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class SellerController : Controller
     {
         private readonly ISellerRepostory _sellerRepostory;
