@@ -1,0 +1,46 @@
+﻿@model LoginViewModel
+
+<style>
+    body {
+        background-color: #f6f6f4;
+    }
+
+    .login-container {
+        max-width: 400px;
+        margin: 5rem auto;
+        background-color: #fff;
+        padding: 2.5rem;
+        border-radius: 0.75rem;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .btn-login {
+        background-color: #007c89;
+        color: #fff !important;
+    }
+
+        .btn-login:hover {
+            background-color: #006471;
+        }
+</style>
+
+<div class="login-container shadow-sm">
+    <h3 class="fw-bold mb-3">Login</h3>
+
+    <form asp-action="Login" method="post">
+
+        <div class="mb-3">
+            <label asp-for="Username">Username</label>
+            <input asp-for="Username" class="form-control" placeholder="Enter your username" type="text" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Password">Password</label>
+            <input asp-for="Password" class="form-control" placeholder="Enter your password" type="password" />
+        </div>
+
+        <div class="d-grid mb-3">
+            <button type="submit" class="btn btn-login py-2">Login</button>
+        </div>
+    </form>
+</div>
