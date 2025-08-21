@@ -1,4 +1,5 @@
 ﻿using CatMS.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CatMS.Repositorys
 {
@@ -9,6 +10,8 @@ namespace CatMS.Repositorys
         Task<Seller> UpdateSellerAsync(Seller seller);
         Task<Seller> DeleteSellerAsync(int id);
         Task<Seller> GetSellerByIdAsync(int id);
-      
+
+        IEnumerable<SelectListItem> Dropdown();
+
     }
 }

@@ -1,5 +1,6 @@
 ﻿using CatMS.Data;
 using CatMS.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace CatMS.Repositorys
@@ -29,6 +30,8 @@ namespace CatMS.Repositorys
             }
             return null;
         }
+
+      
 
         public async Task<IEnumerable<Buyer>> GetAllCatsAsync()
         {

@@ -33,9 +33,14 @@
                         <td>@seller.Address</td>
                         <td>@seller.JoinDate.ToString("yyyy-MM-dd")</td>
                         <td class="text-center">
-                            <a asp-action="CreateOrEdit" asp-route-id="@seller.Id" class="btn btn-sm btn-warning me-1 mx-1"><i class="bi bi-pencil-square"></i></a>
-                            <a asp-action="Details" asp-route-id="@seller.Id" class="btn btn-sm btn-info me-1 mx-1"><i class="bi bi-info-circle"></i></a>
-                            <a asp-action="Delete" asp-route-id="@seller.Id" class="btn btn-sm btn-danger mx-1"><i class="bi bi-trash3-fill"></i></a>
+                            <div class="d-flex justify-content-center">
+                                <a asp-action="CreateOrEdit" asp-route-id="@seller.Id" class="btn btn-primary mx-1"><i class="bi bi-pencil-square"></i></a>
+                                <form method="post" onclick="return confirm('Are You Sure Delete Data')">
+
+                                    <button asp-action="Delete" asp-route-id="@seller.Id" class="btn btn-danger mx-1"><i class="bi bi-trash3-fill"></i></button>
+                                </form>
+                                <a asp-action="Details" asp-route-id="@seller.Id" class="btn btn-primary mx-1"><i class="bi bi-info-circle"></i></a>
+                            </div>
                         </td>
                     </tr>
                 }

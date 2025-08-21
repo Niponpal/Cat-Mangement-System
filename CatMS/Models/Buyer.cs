@@ -8,5 +8,8 @@
         public string Phone { get; set; }         // Buyer Contact
         public string Address { get; set; }       // Buyer Location
         public DateTime RegisterDate { get; set; } // Registered date
+
+        // Navigation property: One Buyer → Many Cats
+        public ICollection<Cat> Cats { get; set; }
     }
 }

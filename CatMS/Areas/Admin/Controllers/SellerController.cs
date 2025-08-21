@@ -61,10 +61,7 @@ namespace CatMS.Areas.Admin.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             var data = await _sellerRepostory.DeleteSellerAsync(id);
-            if (data != null)
-            {
-                return View(data);
-            }
+            
             return RedirectToAction("Index");
         }
     }

@@ -1,9 +1,9 @@
 ﻿@model Cat
 
-<div class="container mt-4">
-    <div class="card shadow-lg border-0">
-        <div class="card-header bg-primary text-white">
-            <h2 class="text-center m-0">Add / Edit Cat</h2>
+<div class="container mt-5">
+    <div class="card shadow-lg border-0 rounded-3">
+        <div class="card-header bg-primary text-white text-center">
+            <h2 class="m-0">Add / Edit Cat</h2>
         </div>
         <div class="card-body">
             <form method="post" enctype="multipart/form-data" asp-action="CreateOrEdit">
@@ -22,21 +22,11 @@
                     </div>
 
                     <!-- Age -->
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <label asp-for="Age" class="form-label fw-bold"></label>
                         <input asp-for="Age" type="number" min="0" class="form-control" placeholder="Enter Age" />
                     </div>
 
-                    <!-- Gender -->
-                    <div class="col-md-4">
-                        <label asp-for="Gender" class="form-label fw-bold"></label>
-                        <select asp-for="Gender" class="form-select">
-                            <option value="">-- Select Gender --</option>
-                            <option>Male</option>
-                            <option>Female</option>
-                            <option>Other</option>
-                        </select>
-                    </div>
 
                     <!-- Price -->
                     <div class="col-md-4">
@@ -56,27 +46,48 @@
                         <input asp-for="PostedDate" type="date" class="form-control" />
                     </div>
 
+                    <!-- Image Upload -->
                     <div class="col-md-6">
-                        <label class="form-label">Choose Your Images</label>
+                        <label class="form-label fw-bold">Choose Your Images</label>
                         <input type="file" id="featuredImageUpload" class="form-control" />
                     </div>
 
+                    <!-- Image URL -->
                     <div class="col-md-6">
                         <label asp-for="ImageUrl" class="form-label fw-bold"></label>
                         <input asp-for="ImageUrl" type="text" id="featuredImageUrl" class="form-control" />
                     </div>
 
-                    <!-- Description -->
-                    <div class="col-md-12">
-                        <label asp-for="Description" class="form-label fw-bold"></label>
-                        <textarea asp-for="Description" class="form-control" rows="3" placeholder="Enter Description"></textarea>
+                    <!-- Seller Dropdown -->
+                    <div class="col-md-6 mt-3">
+                        <label class="form-label fw-bold">Select Seller</label>
+                        <select asp-for="SellerId" class="form-select" asp-items="@(ViewBag.SellerId)">
+                            <option value="">Select Your Email</option>
+                        </select>
                     </div>
 
+
+                    <!-- Gender -->
+                    <div class="col-md-6 mt-3">
+                        <label asp-for="Gender" class="form-label fw-bold"></label>
+                        <select asp-for="Gender" class="form-select">
+                            <option value="">-- Select Gender --</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="col-12">
+                        <label asp-for="Description" class="form-label fw-bold"></label>
+                        <textarea asp-for="Description" class="form-control" rows="4" placeholder="Enter Description"></textarea>
+                    </div>
 
                 </div>
 
                 <!-- Buttons -->
-                <div class="text-center mt-4">
+                <div class="d-flex justify-content-center mt-4">
                     <button type="submit" class="btn btn-success px-4 me-2">💾 Save</button>
                     <a asp-action="Index" class="btn btn-secondary px-4">❌ Cancel</a>
                 </div>
@@ -84,6 +95,7 @@
         </div>
     </div>
 </div>
+
 
 
 @section Scripts {

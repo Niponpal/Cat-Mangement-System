@@ -1,5 +1,6 @@
 ﻿using CatMS.Data;
 using CatMS.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace CatMS.Repositorys
@@ -29,6 +30,16 @@ namespace CatMS.Repositorys
                 return data;
             }
             return null;
+        }
+
+        public IEnumerable<SelectListItem> Dropdown()
+        {
+            var data = _context.Sellers.Select(x => new SelectListItem
+            {
+                Text = x.Email,
+                Value = x.Id.ToString()
+            }).ToList();
+            return data;
         }
 
         public async Task<IEnumerable<Seller>> GetAllSellersAsync()

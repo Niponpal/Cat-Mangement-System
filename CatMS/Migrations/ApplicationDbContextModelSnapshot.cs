@@ -69,6 +69,9 @@ namespace CatMS.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("BuyerId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Color")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -95,7 +98,14 @@ namespace CatMS.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<int>("SellerId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("BuyerId");
+
+                    b.HasIndex("SellerId");
 
                     b.ToTable("Cats");
                 });
@@ -130,6 +140,34 @@ namespace CatMS.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Sellers");
+                });
+
+            modelBuilder.Entity("CatMS.Models.Cat", b =>
+                {
+                    b.HasOne("CatMS.Models.Buyer", "Buyer")
+                        .WithMany("Cats")
+                        .HasForeignKey("BuyerId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("CatMS.Models.Seller", "Seller")
+                        .WithMany("Cats")
+                        .HasForeignKey("SellerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Buyer");
+
+                    b.Navigation("Seller");
+                });
+
+            modelBuilder.Entity("CatMS.Models.Buyer", b =>
+                {
+                    b.Navigation("Cats");
+                });
+
+            modelBuilder.Entity("CatMS.Models.Seller", b =>
+                {
+                    b.Navigation("Cats");
                 });
 #pragma warning restore 612, 618
         }

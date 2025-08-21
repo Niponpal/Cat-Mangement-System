@@ -1,4 +1,5 @@
 ﻿using CatMS.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CatMS.Repositorys
 {
@@ -9,5 +10,6 @@ namespace CatMS.Repositorys
         Task<Buyer> AddCatAsync(Buyer buyer);
         Task<Buyer> UpdateCatAsync(Buyer buyer);
         Task<Buyer> DeleteCatAsync(int id);
+       
     }
 }
