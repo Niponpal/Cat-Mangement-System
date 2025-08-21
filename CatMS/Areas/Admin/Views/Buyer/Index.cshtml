@@ -2,7 +2,92 @@
 
 
 
-<h2 class="text-center mb-4">Buyers List</h2>
+<div class="card">
+    <div class="card-header">
+        <a asp-action="CreateOrEdit" class="btn btn-success">
+            <i class="bi bi-plus-circle"></i> Add New Buyer
+        </a>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Register Date</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var buyer in Model)
+                    {
+                        <tr>
+                            <td>@buyer.Id</td>
+                            <td>@buyer.FullName</td>
+                            <td>@buyer.Email</td>
+                            <td>@buyer.Phone</td>
+                            <td>@buyer.Address</td>
+                            <td>@buyer.RegisterDate.ToString("yyyy-MM-dd")</td>
+                            <td class="text-center">
+                                <a asp-action="CreateOrEdit" asp-route-id="@buyer.Id" class="btn btn-sm btn-warning me-1">Edit</a>
+                                <a asp-action="Details" asp-route-id="@buyer.Id" class="btn btn-sm btn-info me-1">Details</a>
+                                <a asp-action="Delete" asp-route-id="@buyer.Id" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="7" class="text-center text-muted">No buyers found.</td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Rendering engine</th>
+                    <th>Browser</th>
+                    <th>Platform(s)</th>
+                    <th>Engine version</th>
+                    <th>CSS grade</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>
+
+
+
+@section Scripts {
+    <script>
+        $(function () {
+          $("#example1").DataTable({
+            "responsive": true, "lengthChange": false, "autoWidth": false,
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+          }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+          $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+          });
+        });
+    </script>
+}
+
+
+
+@* <h2 class="text-center mb-4">Buyers List</h2>
 
 <div class="mb-3 text-end">
     <a asp-action="CreateOrEdit" class="btn btn-success">+ Add New Buyer</a>
@@ -48,3 +133,4 @@
         }
     </tbody>
 </table>
+ *@
