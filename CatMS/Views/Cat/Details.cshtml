@@ -1,0 +1,65 @@
+﻿@model CatMS.Models.Cat
+
+<div class="container mt-5">
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-primary text-white text-center">
+            <h2 class="m-0">Cat Details</h2>
+        </div>
+        <div class="card-body">
+
+            <!-- Cat Image -->
+            <div class="mb-3 text-center">
+                <h5 class="fw-bold">Image:</h5>
+                <img src="@Model.ImageUrl" alt="@Model.Name" class="img-fluid rounded" style="max-width:300px; height:auto;" />
+            </div>
+
+            <!-- Cat Details -->
+            <div class="mb-3">
+                <h5 class="fw-bold">Name:</h5>
+                <p class="text-secondary">@Model.Name</p>
+            </div>
+
+            <div class="mb-3">
+                <h5 class="fw-bold">Breed:</h5>
+                <p class="text-secondary">@Model.Breed</p>
+            </div>
+
+            <div class="mb-3">
+                <h5 class="fw-bold">Age:</h5>
+                <p class="text-secondary">@Model.Age @((Model.Age == 1) ? "month/year" : "months/years")</p>
+            </div>
+
+            <div class="mb-3">
+                <h5 class="fw-bold">Gender:</h5>
+                <p class="text-secondary">@Model.Gender</p>
+            </div>
+
+            <div class="mb-3">
+                <h5 class="fw-bold">Price:</h5>
+                <p class="text-success fw-bold">$@Model.Price.ToString("0.00")</p>
+            </div>
+
+            <div class="mb-3">
+                <h5 class="fw-bold">Color:</h5>
+                <p class="text-secondary">@Model.Color</p>
+            </div>
+
+            <div class="mb-3">
+                <h5 class="fw-bold">Description:</h5>
+                <p class="text-secondary">@Model.Description</p>
+            </div>
+
+            <div class="mb-3">
+                <h5 class="fw-bold">Posted Date:</h5>
+                <p class="text-muted">@Model.PostedDate.ToString("dd MMM yyyy")</p>
+            </div>
+
+            <!-- Buttons -->
+            <div class="text-center mt-4">
+                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning me-2">✏️ Edit</a>
+                <a asp-action="Index" class="btn btn-secondary">⬅️ Back</a>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,115 @@
+﻿@model Cat
+
+<div class="container mt-4">
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-primary text-white">
+            <h2 class="text-center m-0">Add / Edit Cat</h2>
+        </div>
+        <div class="card-body">
+            <form method="post" enctype="multipart/form-data" asp-action="CreateOrEdit">
+                <div class="row g-3">
+
+                    <!-- Name -->
+                    <div class="col-md-6">
+                        <label asp-for="Name" class="form-label fw-bold"></label>
+                        <input asp-for="Name" class="form-control" placeholder="Enter Cat Name" />
+                    </div>
+
+                    <!-- Breed -->
+                    <div class="col-md-6">
+                        <label asp-for="Breed" class="form-label fw-bold"></label>
+                        <input asp-for="Breed" class="form-control" placeholder="Enter Breed Type" />
+                    </div>
+
+                    <!-- Age -->
+                    <div class="col-md-4">
+                        <label asp-for="Age" class="form-label fw-bold"></label>
+                        <input asp-for="Age" type="number" min="0" class="form-control" placeholder="Enter Age" />
+                    </div>
+
+                    <!-- Gender -->
+                    <div class="col-md-4">
+                        <label asp-for="Gender" class="form-label fw-bold"></label>
+                        <select asp-for="Gender" class="form-select">
+                            <option value="">-- Select Gender --</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+                    <!-- Price -->
+                    <div class="col-md-4">
+                        <label asp-for="Price" class="form-label fw-bold"></label>
+                        <input asp-for="Price" type="number" step="0.01" class="form-control" placeholder="Enter Price" />
+                    </div>
+
+                    <!-- Color -->
+                    <div class="col-md-6">
+                        <label asp-for="Color" class="form-label fw-bold"></label>
+                        <input asp-for="Color" class="form-control" placeholder="Enter Color" />
+                    </div>
+
+                    <!-- Posted Date -->
+                    <div class="col-md-6">
+                        <label asp-for="PostedDate" class="form-label fw-bold"></label>
+                        <input asp-for="PostedDate" type="date" class="form-control" />
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Choose Your Images</label>
+                        <input type="file" id="featuredImageUpload" class="form-control" />
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="ImageUrl" class="form-label fw-bold"></label>
+                        <input asp-for="ImageUrl" type="text" id="featuredImageUrl" class="form-control" />
+                    </div>
+
+                    <!-- Description -->
+                    <div class="col-md-12">
+                        <label asp-for="Description" class="form-label fw-bold"></label>
+                        <textarea asp-for="Description" class="form-control" rows="3" placeholder="Enter Description"></textarea>
+                    </div>
+
+
+                </div>
+
+                <!-- Buttons -->
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-success px-4 me-2">💾 Save</button>
+                    <a asp-action="Index" class="btn btn-secondary px-4">❌ Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script>
+        // let editor = new FroalaEditor("#content");
+         let featureUploadElement = document.getElementById("featuredImageUpload");
+         let FeaturedImageUrlElement = document.getElementById("featuredImageUrl");
+
+          async function featureImageUpload(e){
+             console.log(e.target.files[0])
+             let data = new FormData();
+             data.append("file",e.target.files[0])
+             fetch("/api/images",{
+                 method:"POST",
+                 headers:{
+                     "Aceept":"*/*"
+                 },
+                 body:data
+             }).then(res=>res.json())
+             .then(result=>{
+                 console.log(result)
+                 FeaturedImageUrlElement.value=result.link.result
+             })
+         }
+
+         featureUploadElement.addEventListener('change', featureImageUpload)
+
+    </script>
+}

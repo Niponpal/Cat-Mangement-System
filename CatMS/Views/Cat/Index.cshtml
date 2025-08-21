@@ -1,0 +1,58 @@
+﻿@model List<Cat>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+            <a class="btn btn-primary mb-3" asp-action="CreateOrEdit">Add New Cat</a>
+            <h1 class="text-center">Cat List</h1>
+            </div>
+            <div class="card-body">
+             <table class="table table-bordered table-striped">
+                 <thead>
+                     <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Breed</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Price</th>
+                        <th>Color</th>
+                        <th>Description</th>
+                        <th>Image</th>
+                        <th>PostedDate</th>
+                        <th>Action</th> 
+                     </tr>
+                 </thead>
+                 <tbody>
+                    @foreach(var item in Model)
+                    {
+                       <tr>
+                           <td>@item.Id</td>
+                           <td>@item.Name</td>
+                           <td>@item.Breed</td>
+                           <td>@item.Age</td>
+                           <td>@item.Gender</td>
+                           <td>@item.Price</td>
+                           <td>@item.Color</td>
+                           <td>@item.Description</td>
+                            <td>
+                                <img src="@item.ImageUrl" alt="Image" style="width:100px; height:auto;" />
+                            </td>
+                            <td>@item.PostedDate</td>
+                           <td>
+                               <div class="d-flex justify-content-center">
+                                   <a asp-action="CreateOrEdit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a>
+                                    <form method="post" onclick="return confirm('Are You Sure Delete Data')">
+
+                                        <button asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</button>
+                                  </form>
+                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Details</a>
+                               </div>
+                           </td>
+                       </tr>
+                    }
+                </tbody>
+             </table>
+            </div>
+        </div>
+    </div>
