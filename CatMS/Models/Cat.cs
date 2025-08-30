@@ -1,4 +1,6 @@
-﻿namespace CatMS.Models
+﻿using NuGet.Protocol.Plugins;
+
+namespace CatMS.Models
 {
     public class Cat
     {
@@ -13,13 +15,19 @@
         public string ImageUrl { get; set; }    // Picture
         public DateTime PostedDate { get; set; }// Date of posting
 
-        // Seller Relation
+        // Seller Relation 
         public int SellerId { get; set; }
         public Seller Seller { get; set; }
 
         // Buyer Relation (optional)
         public int? BuyerId { get; set; }       // Nullable for SetNull on delete
         public Buyer Buyer { get; set; }
+
+
+        public ICollection<Seller> sellers { get; set; }
+        public ICollection<CatLike> Likes { get; set; }
+        public ICollection<CatComment> Comments { get; set; }
+
 
 
     }

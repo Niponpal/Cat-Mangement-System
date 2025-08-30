@@ -66,7 +66,7 @@ namespace CatMS.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(loginViewModel);
+                return RedirectToAction("AccessDenied", "Account");
             }
 
             var signInResult = await _signInManager.PasswordSignInAsync(
@@ -112,7 +112,6 @@ namespace CatMS.Controllers
         [HttpGet]
         public async Task<IActionResult> AccessDenied()
         {
-
             return View();
         }
     }

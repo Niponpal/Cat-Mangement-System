@@ -33,23 +33,27 @@ namespace CatMS.Repositorys
 
         public async Task<IEnumerable<Cat>> GetAllCatsAsync()
         {
-          var data = await _context.Cats.ToListAsync();
+            return await _context.Cats.Include(x => x.sellers).ToListAsync();
+          
+        }
+
+        public async Task<Cat> GetByUrlHandleAsync(string urlHandle)
+        {
+            var data = await _context.Cats.Include(x => x.sellers).FirstOrDefaultAsync(x => x.ImageUrl == urlHandle);
             return data;
         }
 
         public async Task<Cat> GetCatByIdAsync(int id)
         {
-           var data =await _context.Cats.FindAsync(id);
-            if (data != null)
-            {
-                return data;
-            }
-            return null;
+
+            return await _context.Cats.Include(x => x.sellers).FirstOrDefaultAsync(x => x.Id == id);
+        
         }
 
         public async Task<Cat> UpdateCatAsync(Cat cat)
         {
-          var data = await _context.Cats.FindAsync(cat.Id);
+            var data = await _context.Cats.Include(x => x.sellers).FirstOrDefaultAsync(x => x.Id == cat.Id);
+           
             if (data != null)
             {
                 data.Name = cat.Name;

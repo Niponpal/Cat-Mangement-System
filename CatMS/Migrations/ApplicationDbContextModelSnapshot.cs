@@ -110,6 +110,56 @@ namespace CatMS.Migrations
                     b.ToTable("Cats");
                 });
 
+            modelBuilder.Entity("CatMS.Models.CatComment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("CatId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CattId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateAdded")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CatId");
+
+                    b.ToTable("CatComments");
+                });
+
+            modelBuilder.Entity("CatMS.Models.CatLike", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("CatId")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CatId");
+
+                    b.ToTable("CatLikes");
+                });
+
             modelBuilder.Entity("CatMS.Models.Seller", b =>
                 {
                     b.Property<int>("Id")
@@ -121,6 +171,9 @@ namespace CatMS.Migrations
                     b.Property<string>("Address")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("CatId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -138,6 +191,8 @@ namespace CatMS.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CatId");
 
                     b.ToTable("Sellers");
                 });
@@ -160,9 +215,41 @@ namespace CatMS.Migrations
                     b.Navigation("Seller");
                 });
 
+            modelBuilder.Entity("CatMS.Models.CatComment", b =>
+                {
+                    b.HasOne("CatMS.Models.Cat", null)
+                        .WithMany("Comments")
+                        .HasForeignKey("CatId");
+                });
+
+            modelBuilder.Entity("CatMS.Models.CatLike", b =>
+                {
+                    b.HasOne("CatMS.Models.Cat", null)
+                        .WithMany("Likes")
+                        .HasForeignKey("CatId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CatMS.Models.Seller", b =>
+                {
+                    b.HasOne("CatMS.Models.Cat", null)
+                        .WithMany("sellers")
+                        .HasForeignKey("CatId");
+                });
+
             modelBuilder.Entity("CatMS.Models.Buyer", b =>
                 {
                     b.Navigation("Cats");
+                });
+
+            modelBuilder.Entity("CatMS.Models.Cat", b =>
+                {
+                    b.Navigation("Comments");
+
+                    b.Navigation("Likes");
+
+                    b.Navigation("sellers");
                 });
 
             modelBuilder.Entity("CatMS.Models.Seller", b =>

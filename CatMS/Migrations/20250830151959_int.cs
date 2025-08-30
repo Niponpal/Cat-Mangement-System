@@ -29,20 +29,33 @@ namespace CatMS.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Sellers",
+                name: "CatComments",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    JoinDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CattId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    DateAdded = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CatId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Sellers", x => x.Id);
+                    table.PrimaryKey("PK_CatComments", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CatLikes",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CatId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CatLikes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -72,13 +85,40 @@ namespace CatMS.Migrations
                         principalTable: "Buyers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.SetNull);
-                    table.ForeignKey(
-                        name: "FK_Cats_Sellers_SellerId",
-                        column: x => x.SellerId,
-                        principalTable: "Sellers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Sellers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    JoinDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CatId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Sellers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Sellers_Cats_CatId",
+                        column: x => x.CatId,
+                        principalTable: "Cats",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CatComments_CatId",
+                table: "CatComments",
+                column: "CatId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CatLikes_CatId",
+                table: "CatLikes",
+                column: "CatId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Cats_BuyerId",
@@ -89,11 +129,49 @@ namespace CatMS.Migrations
                 name: "IX_Cats_SellerId",
                 table: "Cats",
                 column: "SellerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Sellers_CatId",
+                table: "Sellers",
+                column: "CatId");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_CatComments_Cats_CatId",
+                table: "CatComments",
+                column: "CatId",
+                principalTable: "Cats",
+                principalColumn: "Id");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_CatLikes_Cats_CatId",
+                table: "CatLikes",
+                column: "CatId",
+                principalTable: "Cats",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Cats_Sellers_SellerId",
+                table: "Cats",
+                column: "SellerId",
+                principalTable: "Sellers",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "FK_Sellers_Cats_CatId",
+                table: "Sellers");
+
+            migrationBuilder.DropTable(
+                name: "CatComments");
+
+            migrationBuilder.DropTable(
+                name: "CatLikes");
+
             migrationBuilder.DropTable(
                 name: "Cats");
 

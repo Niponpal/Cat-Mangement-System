@@ -166,15 +166,15 @@ namespace CatMS.Migrations.AuthDb
                         {
                             Id = "472ba632-6133-44a1-b158-6c10bd7d850d",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ced1627a-30b4-493f-9cbe-f4d46876a81d",
+                            ConcurrencyStamp = "c8d16ed9-cbd2-4abb-9444-17eb06fcd134",
                             Email = "superadmin@bloggie.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "SUPERADMIN@BLOGGIE.COM",
                             NormalizedUserName = "SUPERADMIN@BLOGGIE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEL+W+z+mt+tT+LaQKWSjS3JPRyp41mYvC29kTS2mP0OUCyvVmWrgdSmwjef3GzgcLg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDNJMB27Px9VGHlaVxmtAwf0OKmmRem1ZEwPQwv0EkwE89bzRAR676UdZFJ1RbtDSQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8cbf20fd-f1f8-493a-961c-20bc093fb8fe",
+                            SecurityStamp = "53ff13cc-582a-4156-b76c-7cc2687b86ba",
                             TwoFactorEnabled = false,
                             UserName = "superadmin@bloggie.com"
                         });

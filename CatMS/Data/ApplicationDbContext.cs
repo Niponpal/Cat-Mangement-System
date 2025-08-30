@@ -30,6 +30,9 @@ namespace CatMS.Data
          public DbSet<Seller> Sellers { get; set; }
          public DbSet<Buyer> Buyers { get; set; }
 
+        public DbSet<CatLike> CatLikes { get; set; }
+        public DbSet<CatComment> CatComments { get; set; }
+
     }
 
 }

@@ -9,5 +9,6 @@ namespace CatMS.Repositorys
         Task<Cat> AddCatAsync(Cat cat);
         Task<Cat> UpdateCatAsync(Cat cat);
         Task<Cat> DeleteCatAsync(int id);
+        Task<Cat> GetByUrlHandleAsync(string urlHandle);
     }
 }

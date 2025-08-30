@@ -2,19 +2,23 @@
 using CatMS.Repositorys;
 using Microsoft.AspNetCore.Mvc;
 
+
 namespace CatMS.Areas.Admin.Controllers
 {
     [Area("Admin")]
+
     public class BuyerController : Controller
     {
-        private readonly IBuyerRepository _buyerRepository;
-        public BuyerController(IBuyerRepository buyerRepository)
+
+        private readonly IBuyerRepository _buyerRepostory;
+        public BuyerController(IBuyerRepository buyerRepostory)
         {
-            _buyerRepository = buyerRepository;
+            _buyerRepostory = buyerRepostory;
         }
+
         public async Task<IActionResult> Index()
         {
-            var data = await _buyerRepository.GetAllCatsAsync();
+            var data = await _buyerRepostory.GetAllCatsAsync();
             return View(data);
         }
         [HttpGet]
@@ -26,7 +30,7 @@ namespace CatMS.Areas.Admin.Controllers
             }
             else
             {
-                var data = await _buyerRepository.GetCatByIdAsync(id);
+                var data = await _buyerRepostory.GetCatByIdAsync(id);
                 return View(data);
             }
         }
@@ -35,19 +39,19 @@ namespace CatMS.Areas.Admin.Controllers
         {
             if (buyer.Id == 0)
             {
-                await _buyerRepository.AddCatAsync(buyer);
+                await _buyerRepostory.AddCatAsync(buyer);
                 return RedirectToAction("Index");
             }
             else
             {
-                await _buyerRepository.UpdateCatAsync(buyer);
+                await _buyerRepostory.UpdateCatAsync(buyer);
                 return RedirectToAction("Index");
             }
         }
         [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
-            var data = await _buyerRepository.GetCatByIdAsync(id);
+            var data = await _buyerRepostory.GetCatByIdAsync(id);
             if (data != null)
             {
                 return View(data);
@@ -57,7 +61,7 @@ namespace CatMS.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
-            var data = await _buyerRepository.DeleteCatAsync(id);
+            var data = await _buyerRepostory.DeleteCatAsync(id);
             if (data != null)
             {
                 return RedirectToAction("Index");
