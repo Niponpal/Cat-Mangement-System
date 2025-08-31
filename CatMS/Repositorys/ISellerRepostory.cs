@@ -10,6 +10,7 @@ namespace CatMS.Repositorys
         Task<Seller> UpdateSellerAsync(Seller seller);
         Task<Seller> DeleteSellerAsync(int id);
         Task<Seller> GetSellerByIdAsync(int id);
+        Task<List<HomeViewModel>> GetHomePageData();
 
         IEnumerable<SelectListItem> Dropdown();
 

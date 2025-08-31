@@ -48,6 +48,33 @@ namespace CatMS.Repositorys
             return data;
         }
 
+        public async Task<List<HomeViewModel>> GetHomePageData()
+        {
+            var catsWithSellers = await _context.Cats
+                .Include(c => c.Seller)
+                .Select(c => new HomeViewModel
+                {
+                    CatId = c.Id,
+                    Name = c.Name,
+                    Breed = c.Breed,
+                    Age = c.Age,
+                    Gender = c.Gender,
+                    Price = c.Price,
+                    Color = c.Color,
+                    Description = c.Description,
+                    ImageUrl = c.ImageUrl,
+                    PostedDate = c.PostedDate,
+                    SellerId = c.Seller.Id,
+                    SellerName = c.Seller.FullName,
+                    SellerEmail = c.Seller.Email,
+                    SellerPhone = c.Seller.Phone,
+                    SellerAddress = c.Seller.Address
+                })
+                .ToListAsync();
+
+            return catsWithSellers;
+        }
+
         public async Task<Seller> GetSellerByIdAsync(int id)
         {
            var data = await _context.Sellers.FindAsync(id);

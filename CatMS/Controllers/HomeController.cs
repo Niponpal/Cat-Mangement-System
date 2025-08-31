@@ -21,14 +21,7 @@ namespace CatMS.Controllers
 
         public async Task<IActionResult> Index(IEnumerable<Cat> cat)
         {
-            var catpost = await _catPostRepository.GetAllSellersAsync();
-            var seller = await _sellerRepository.GetAllSellersAsync();
-            var model = new HomeViewModel
-            {
-                Cats = cat,       // ? Cat type
-                sellers = seller
-            };
-
+            var model = await _sellerRepository.GetHomePageData();
             return View(model);
         }
 
