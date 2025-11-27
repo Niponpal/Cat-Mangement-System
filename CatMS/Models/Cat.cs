@@ -25,9 +25,6 @@ namespace CatMS.Models
 
 
         public ICollection<Seller> sellers { get; set; }
-        public ICollection<CatLike> Likes { get; set; }
-        public ICollection<CatComment> Comments { get; set; }
-
 
 
     }

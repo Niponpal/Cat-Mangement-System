@@ -1,0 +1,181 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\NP\\Desktop\\SW2\\Cat-Mangement-System\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0EBB2743-5D33-4BC2-AAA5-1566D45FF218}|CatMS\\CatMS.csproj|c:\\users\\np\\desktop\\sw2\\cat-mangement-system\\catms\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0EBB2743-5D33-4BC2-AAA5-1566D45FF218}|CatMS\\CatMS.csproj|solutionrelative:catms\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EBB2743-5D33-4BC2-AAA5-1566D45FF218}|CatMS\\CatMS.csproj|c:\\users\\np\\desktop\\sw2\\cat-mangement-system\\catms\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{0EBB2743-5D33-4BC2-AAA5-1566D45FF218}|CatMS\\CatMS.csproj|solutionrelative:catms\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EBB2743-5D33-4BC2-AAA5-1566D45FF218}|CatMS\\CatMS.csproj|c:\\users\\np\\desktop\\sw2\\cat-mangement-system\\catms\\data\\authdbcontext .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0EBB2743-5D33-4BC2-AAA5-1566D45FF218}|CatMS\\CatMS.csproj|solutionrelative:catms\\data\\authdbcontext .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EBB2743-5D33-4BC2-AAA5-1566D45FF218}|CatMS\\CatMS.csproj|c:\\users\\np\\desktop\\sw2\\cat-mangement-system\\catms\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0EBB2743-5D33-4BC2-AAA5-1566D45FF218}|CatMS\\CatMS.csproj|solutionrelative:catms\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EBB2743-5D33-4BC2-AAA5-1566D45FF218}|CatMS\\CatMS.csproj|c:\\users\\np\\desktop\\sw2\\cat-mangement-system\\catms\\models\\buyer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0EBB2743-5D33-4BC2-AAA5-1566D45FF218}|CatMS\\CatMS.csproj|solutionrelative:catms\\models\\buyer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EBB2743-5D33-4BC2-AAA5-1566D45FF218}|CatMS\\CatMS.csproj|c:\\users\\np\\desktop\\sw2\\cat-mangement-system\\catms\\models\\cat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0EBB2743-5D33-4BC2-AAA5-1566D45FF218}|CatMS\\CatMS.csproj|solutionrelative:catms\\models\\cat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EBB2743-5D33-4BC2-AAA5-1566D45FF218}|CatMS\\CatMS.csproj|c:\\users\\np\\desktop\\sw2\\cat-mangement-system\\catms\\models\\seller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0EBB2743-5D33-4BC2-AAA5-1566D45FF218}|CatMS\\CatMS.csproj|solutionrelative:catms\\models\\seller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EBB2743-5D33-4BC2-AAA5-1566D45FF218}|CatMS\\CatMS.csproj|c:\\users\\np\\desktop\\sw2\\cat-mangement-system\\catms\\models\\homeviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0EBB2743-5D33-4BC2-AAA5-1566D45FF218}|CatMS\\CatMS.csproj|solutionrelative:catms\\models\\homeviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EBB2743-5D33-4BC2-AAA5-1566D45FF218}|CatMS\\CatMS.csproj|c:\\users\\np\\desktop\\sw2\\cat-mangement-system\\catms\\views\\home\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0EBB2743-5D33-4BC2-AAA5-1566D45FF218}|CatMS\\CatMS.csproj|solutionrelative:catms\\views\\home\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EBB2743-5D33-4BC2-AAA5-1566D45FF218}|CatMS\\CatMS.csproj|c:\\users\\np\\desktop\\sw2\\cat-mangement-system\\catms\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0EBB2743-5D33-4BC2-AAA5-1566D45FF218}|CatMS\\CatMS.csproj|solutionrelative:catms\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\NP\\Desktop\\SW2\\Cat-Mangement-System\\CatMS\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "CatMS\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\NP\\Desktop\\SW2\\Cat-Mangement-System\\CatMS\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "CatMS\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAAwGQAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-27T04:54:09.018Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Buyer.cs",
+              "DocumentMoniker": "C:\\Users\\NP\\Desktop\\SW2\\Cat-Mangement-System\\CatMS\\Models\\Buyer.cs",
+              "RelativeDocumentMoniker": "CatMS\\Models\\Buyer.cs",
+              "ToolTip": "C:\\Users\\NP\\Desktop\\SW2\\Cat-Mangement-System\\CatMS\\Models\\Buyer.cs",
+              "RelativeToolTip": "CatMS\\Models\\Buyer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-23T07:10:50.611Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Seller.cs",
+              "DocumentMoniker": "C:\\Users\\NP\\Desktop\\SW2\\Cat-Mangement-System\\CatMS\\Models\\Seller.cs",
+              "RelativeDocumentMoniker": "CatMS\\Models\\Seller.cs",
+              "ToolTip": "C:\\Users\\NP\\Desktop\\SW2\\Cat-Mangement-System\\CatMS\\Models\\Seller.cs",
+              "RelativeToolTip": "CatMS\\Models\\Seller.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-23T07:10:25.573Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\NP\\Desktop\\SW2\\Cat-Mangement-System\\CatMS\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "CatMS\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\NP\\Desktop\\SW2\\Cat-Mangement-System\\CatMS\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "CatMS\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAuwC4AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T17:20:16.555Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Cat.cs",
+              "DocumentMoniker": "C:\\Users\\NP\\Desktop\\SW2\\Cat-Mangement-System\\CatMS\\Models\\Cat.cs",
+              "RelativeDocumentMoniker": "CatMS\\Models\\Cat.cs",
+              "ToolTip": "C:\\Users\\NP\\Desktop\\SW2\\Cat-Mangement-System\\CatMS\\Models\\Cat.cs",
+              "RelativeToolTip": "CatMS\\Models\\Cat.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAmwBsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-23T07:10:05.358Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "HomeViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\NP\\Desktop\\SW2\\Cat-Mangement-System\\CatMS\\Models\\HomeViewModel.cs",
+              "RelativeDocumentMoniker": "CatMS\\Models\\HomeViewModel.cs",
+              "ToolTip": "C:\\Users\\NP\\Desktop\\SW2\\Cat-Mangement-System\\CatMS\\Models\\HomeViewModel.cs",
+              "RelativeToolTip": "CatMS\\Models\\HomeViewModel.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAgwAwAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T19:08:42.82Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\NP\\Desktop\\SW2\\Cat-Mangement-System\\CatMS\\Views\\Home\\Details.cshtml",
+              "RelativeDocumentMoniker": "CatMS\\Views\\Home\\Details.cshtml",
+              "ToolTip": "C:\\Users\\NP\\Desktop\\SW2\\Cat-Mangement-System\\CatMS\\Views\\Home\\Details.cshtml",
+              "RelativeToolTip": "CatMS\\Views\\Home\\Details.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD4CAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-26T19:08:18.759Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AuthDbContext .cs",
+              "DocumentMoniker": "C:\\Users\\NP\\Desktop\\SW2\\Cat-Mangement-System\\CatMS\\Data\\AuthDbContext .cs",
+              "RelativeDocumentMoniker": "CatMS\\Data\\AuthDbContext .cs",
+              "ToolTip": "C:\\Users\\NP\\Desktop\\SW2\\Cat-Mangement-System\\CatMS\\Data\\AuthDbContext .cs",
+              "RelativeToolTip": "CatMS\\Data\\AuthDbContext .cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-23T07:06:04.853Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\NP\\Desktop\\SW2\\Cat-Mangement-System\\CatMS\\appsettings.json",
+              "RelativeDocumentMoniker": "CatMS\\appsettings.json",
+              "ToolTip": "C:\\Users\\NP\\Desktop\\SW2\\Cat-Mangement-System\\CatMS\\appsettings.json",
+              "RelativeToolTip": "CatMS\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-23T07:03:47.921Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\NP\\Desktop\\SW2\\Cat-Mangement-System\\CatMS\\Program.cs",
+              "RelativeDocumentMoniker": "CatMS\\Program.cs",
+              "ToolTip": "C:\\Users\\NP\\Desktop\\SW2\\Cat-Mangement-System\\CatMS\\Program.cs",
+              "RelativeToolTip": "CatMS\\Program.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAAA0AAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-23T07:03:46.783Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

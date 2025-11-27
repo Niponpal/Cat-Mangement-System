@@ -30,6 +30,24 @@ namespace CatMS.Controllers
             return View();
         }
 
+        public async Task<IActionResult> Details(int id)
+        {
+            // Get all cats from repository
+            var cats = await _sellerRepository.GetHomePageData();
+
+            // Find the specific cat by id
+            var cat = cats.FirstOrDefault(c => c.CatId == id);
+
+            if (cat == null)
+            {
+                return NotFound();
+            }
+
+            return View(cat);
+        }
+
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

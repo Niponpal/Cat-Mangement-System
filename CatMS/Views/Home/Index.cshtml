@@ -4,6 +4,414 @@
     ViewData["Title"] = "Home Page";
 }
 
+
+<!-- Hero Section -->
+<section class="hero-section bg-light py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-12 col-lg-6">
+                <h1 class="hero-title fw-bold mb-4">
+                    Bloggie - The Cat Blog
+                </h1>
+                <p class="hero-subtitle lead text-muted mb-4">
+                    Bloggie is the cozy home to cat blogs, covering a wide range of topics about our furry friends. From cat care, nutrition, health tips, training, breeds, and behavior to fun stories and cute cat moments – you'll find everything here. 🐱
+                </p>
+                <div class="hero-actions">
+                    <button class="btn btn-primary btn-lg me-3">Browse Cats</button>
+                    <button class="btn btn-outline-secondary btn-lg">Learn More</button>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 mt-4 mt-lg-0">
+                <div class="hero-image-container">
+                    <img src="https://placecats.com/600/400"
+                         alt="Bloggie - Cat Blog"
+                         class="hero-image img-fluid rounded-3 shadow" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Cats Section -->
+<section class="cats-section py-5">
+    <div class="container">
+        <div class="section-header text-center mb-5">
+            <h2 class="section-title fw-bold">Available Cats</h2>
+            <p class="section-subtitle text-muted">Find your perfect feline companion</p>
+        </div>
+
+        <div class="row">
+            @if (Model != null && Model.Count > 0)
+            {
+                foreach (var cat in Model)
+                {
+                    <div class="col-xl-6 mb-4">
+                        <div class="cat-card card border-0 shadow-sm h-100">
+                            <div class="card-image-container">
+                                <img src="@cat.ImageUrl" class="cat-image card-img-top" alt="@cat.Description" />
+                                <div class="card-badge">Available</div>
+                            </div>
+                            <div class="card-body p-4">
+                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                    <h5 class="card-title fw-bold text-primary mb-0">@cat.Name</h5>
+                                    <span class="cat-price badge bg-success fs-6">$@cat.Price</span>
+                                </div>
+
+                                <div class="cat-details mb-4">
+                                    <div class="row g-2">
+                                        <div class="col-6">
+                                            <div class="detail-item">
+                                                <i class="fas fa-paw text-muted me-2"></i>
+                                                <span class="fw-medium">Breed:</span>
+                                                <span class="text-dark">@cat.Breed</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="detail-item">
+                                                <i class="fas fa-birthday-cake text-muted me-2"></i>
+                                                <span class="fw-medium">Age:</span>
+                                                <span class="text-dark">@cat.Age years</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="detail-item">
+                                                <i class="fas fa-venus-mars text-muted me-2"></i>
+                                                <span class="fw-medium">Gender:</span>
+                                                <span class="text-dark">@cat.Gender</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="detail-item">
+                                                <i class="fas fa-palette text-muted me-2"></i>
+                                                <span class="fw-medium">Color:</span>
+                                                <span class="text-dark">@cat.Color</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="post-info mb-3">
+                                    <small class="text-muted">
+                                        <i class="far fa-calendar me-1"></i>
+                                        Posted: @cat.PostedDate.ToShortDateString()
+                                    </small>
+                                </div>
+
+                                <div class="seller-info bg-light rounded p-3 mb-4">
+                                    <h6 class="seller-title fw-bold text-primary mb-3">
+                                        <i class="fas fa-user me-2"></i>Seller Information
+                                    </h6>
+                                    <div class="row g-2">
+                                        <div class="col-12">
+                                            <div class="seller-detail">
+                                                <span class="fw-medium">Name:</span>
+                                                <span class="text-dark">@cat.SellerName</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="seller-detail">
+                                                <span class="fw-medium">Email:</span>
+                                                <span class="text-dark">@cat.SellerEmail</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="seller-detail">
+                                                <span class="fw-medium">Phone:</span>
+                                                <span class="text-dark">@cat.SellerPhone</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="seller-detail">
+                                                <span class="fw-medium">Address:</span>
+                                                <span class="text-dark">@cat.SellerAddress</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card-actions d-flex justify-content-between align-items-center">
+                                    <a asp-action="Details" asp-controller="Home" asp-route-id="@cat.CatId" class="btn btn-primary px-4">
+                                        <i class="fas fa-eye me-2"></i>View Details
+                                    </a>
+                                    <div class="action-buttons">
+                                        <button class="btn btn-outline-secondary btn-sm me-2">
+                                            <i class="far fa-heart"></i>
+                                        </button>
+                                        <button class="btn btn-outline-secondary btn-sm">
+                                            <i class="fas fa-share-alt"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="col-12">
+                    <div class="empty-state text-center py-5">
+                        <div class="empty-icon mb-4">
+                            <i class="fas fa-cat fa-4x text-muted"></i>
+                        </div>
+                        <h3 class="empty-title fw-bold text-muted mb-3">No Cats Available</h3>
+                        <p class="empty-text text-muted mb-4">We're currently updating our cat listings. Please check back soon!</p>
+                        <button class="btn btn-primary">Notify Me When Available</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Custom CSS Variables */
+    :root {
+        --primary-color: #4a6fa5;
+        --secondary-color: #ff7e5f;
+        --accent-color: #6b8e23;
+        --light-color: #f8f9fa;
+        --dark-color: #343a40;
+        --text-color: #495057;
+        --border-radius: 12px;
+        --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        --transition: all 0.3s ease;
+    }
+
+    /* Hero Section */
+    .hero-section {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .hero-title {
+        color: var(--primary-color);
+        font-size: 3rem;
+        line-height: 1.2;
+    }
+
+    .hero-subtitle {
+        font-size: 1.25rem;
+        line-height: 1.6;
+    }
+
+    .hero-image {
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        transition: var(--transition);
+    }
+
+        .hero-image:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+    .hero-actions .btn {
+        border-radius: 50px;
+        padding: 0.75rem 2rem;
+        font-weight: 600;
+        transition: var(--transition);
+    }
+
+        .hero-actions .btn:hover {
+            transform: translateY(-2px);
+        }
+
+    /* Cats Section */
+    .section-title {
+        color: var(--primary-color);
+        font-size: 2.5rem;
+        position: relative;
+    }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary-color);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+    .section-subtitle {
+        font-size: 1.1rem;
+    }
+
+    /* Cat Cards */
+    .cat-card {
+        border-radius: var(--border-radius);
+        transition: var(--transition);
+        overflow: hidden;
+    }
+
+        .cat-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+        }
+
+    .card-image-container {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .cat-image {
+        height: 280px;
+        object-fit: cover;
+        transition: var(--transition);
+    }
+
+    .cat-card:hover .cat-image {
+        transform: scale(1.05);
+    }
+
+    .card-badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: var(--secondary-color);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+
+    .cat-price {
+        font-size: 1.1rem !important;
+        padding: 0.5rem 1rem;
+    }
+
+    /* Detail Items */
+    .detail-item {
+        display: flex;
+        align-items: center;
+        padding: 0.5rem 0;
+    }
+
+    .seller-detail {
+        padding: 0.25rem 0;
+    }
+
+    .seller-title {
+        font-size: 1rem;
+    }
+
+    /* Empty State */
+    .empty-state {
+        padding: 4rem 2rem;
+    }
+
+    .empty-icon {
+        opacity: 0.7;
+    }
+
+    .empty-title {
+        font-size: 1.75rem;
+    }
+
+    /* Buttons */
+    .btn-primary {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        border-radius: 50px;
+        font-weight: 600;
+        transition: var(--transition);
+    }
+
+        .btn-primary:hover {
+            background-color: #3a5a8c;
+            border-color: #3a5a8c;
+            transform: translateY(-2px);
+        }
+
+    .btn-outline-secondary {
+        border-radius: 50px;
+        transition: var(--transition);
+    }
+
+        .btn-outline-secondary:hover {
+            transform: translateY(-2px);
+        }
+
+    /* Responsive Design */
+
+
+
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Favorite button functionality
+        const favoriteButtons = document.querySelectorAll('.btn-outline-secondary');
+        favoriteButtons.forEach(button => {
+            if (button.querySelector('.fa-heart')) {
+                button.addEventListener('click', function() {
+                    const icon = this.querySelector('i');
+                    if (icon.classList.contains('far')) {
+                        icon.classList.remove('far');
+                        icon.classList.add('fas', 'text-danger');
+                        this.classList.add('btn-danger');
+                        this.classList.remove('btn-outline-secondary');
+                    } else {
+                        icon.classList.remove('fas', 'text-danger');
+                        icon.classList.add('far');
+                        this.classList.remove('btn-danger');
+                        this.classList.add('btn-outline-secondary');
+                    }
+                });
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add loading animation to cards
+        const cards = document.querySelectorAll('.cat-card');
+        cards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+        });
+
+        // Animate cards on load
+        setTimeout(() => {
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        }, 300);
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+@* @model List<CatMS.Models.HomeViewModel>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
 <div class="container col-xxl-8 px-4 py-5">
     <div class="row align-items-center g-5 py-5">
         <div class="col-12 col-lg-6">
@@ -65,3 +473,5 @@
         }
     </div>
 </div>
+
+ *@

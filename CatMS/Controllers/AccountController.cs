@@ -83,19 +83,19 @@ namespace CatMS.Controllers
                 {
                     var roles = await _userManager.GetRolesAsync(user);
 
-                    if (roles.Contains("Admin"))
+                    if (roles.Contains("User"))
                     {
                         // Redirect Admin to Admin Area Dashboard
                         return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
                     }
                 }
 
-                if (!string.IsNullOrWhiteSpace(loginViewModel.ReturnUrl))
-                {
-                    return Redirect(loginViewModel.ReturnUrl);
-                }
+                //if (!string.IsNullOrWhiteSpace(loginViewModel.ReturnUrl))
+                //{
+                //    return Redirect(loginViewModel.ReturnUrl);
+                //}
 
-                return RedirectToAction("Index", "Home");
+                //return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
             }
 
             ModelState.AddModelError(string.Empty, "Invalid login attempt.");

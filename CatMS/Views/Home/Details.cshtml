@@ -1,0 +1,575 @@
+﻿@model CatMS.Models.HomeViewModel
+
+@{
+    ViewData["Title"] = $"{Model.Name} - Details";
+}
+
+<!-- Details Page CSS -->
+<style>
+    :root {
+        --primary-color: #4a6fa5;
+        --secondary-color: #ff7e5f;
+        --accent-color: #6b8e23;
+        --light-color: #f8f9fa;
+        --dark-color: #343a40;
+        --text-color: #495057;
+        --border-radius: 12px;
+        --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        --transition: all 0.3s ease;
+    }
+
+    .cat-details-section {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        min-height: 100vh;
+    }
+
+    .breadcrumb {
+        background: transparent;
+        padding: 0;
+    }
+
+    .breadcrumb-item a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: var(--transition);
+    }
+
+        .breadcrumb-item a:hover {
+            color: var(--secondary-color);
+        }
+
+    .main-image {
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--box-shadow);
+    }
+
+    .image-gallery img {
+        transition: var(--transition);
+        cursor: pointer;
+    }
+
+        .image-gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+    .sticky-sidebar {
+        position: sticky;
+        top: 100px;
+    }
+
+    .info-card {
+        border-radius: var(--border-radius);
+        border: none;
+        box-shadow: var(--box-shadow);
+        transition: var(--transition);
+    }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+    .price-section h3 {
+        font-size: 2.5rem;
+    }
+
+    .info-item {
+        border-color: #e9ecef !important;
+    }
+
+    .action-buttons .btn {
+        border-radius: 10px;
+        padding: 0.75rem 1.5rem;
+        font-weight: 600;
+        transition: var(--transition);
+    }
+
+        .action-buttons .btn:hover {
+            transform: translateY(-2px);
+        }
+
+    .detail-tabs .nav-link {
+        border-radius: 8px;
+        margin-right: 10px;
+        padding: 1rem 1.5rem;
+        color: #6c757d;
+        font-weight: 500;
+        border: 1px solid #e9ecef;
+        transition: var(--transition);
+    }
+
+        .detail-tabs .nav-link.active {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+
+        .detail-tabs .nav-link:hover:not(.active) {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+    .tab-content {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        box-shadow: var(--box-shadow);
+    }
+
+    .feature-item {
+        display: flex;
+        align-items: center;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid #f1f3f4;
+    }
+
+        .feature-item:last-child {
+            border-bottom: none;
+        }
+
+    .feature-icon {
+        width: 40px;
+        height: 40px;
+        background: var(--primary-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+        color: white;
+    }
+
+    .seller-contact-card {
+        background: linear-gradient(135deg, var(--primary-color), #3a5a8c);
+        color: white;
+        border-radius: var(--border-radius);
+        padding: 2rem;
+    }
+
+    .contact-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+        .contact-item i {
+            width: 30px;
+            text-align: center;
+            margin-right: 1rem;
+            color: var(--secondary-color);
+        }
+
+    .health-badge {
+        background: #d4edda;
+        color: #155724;
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .care-item {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+        border-left: 4px solid var(--primary-color);
+    }
+
+    /* Animation for page load */
+    .fade-in {
+        animation: fadeIn 0.8s ease-in;
+    }
+
+    @@keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Responsive Design */
+    @@media (max-width: 768px) {
+        .sticky-sidebar {
+            position: static;
+            margin-top: 2rem;
+        }
+
+        .detail-tabs .nav-link {
+            margin-bottom: 0.5rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        .price-section h3 {
+            font-size: 2rem;
+        }
+    }
+
+    @@media (max-width: 576px) {
+        .action-buttons .btn {
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        .feature-item {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .feature-icon {
+            margin-bottom: 0.5rem;
+        }
+    }
+</style>
+
+<section class="cat-details-section py-5 fade-in">
+    <div class="container">
+        <!-- Breadcrumb Navigation -->
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/" class="text-decoration-none"><i class="fas fa-home me-1"></i>Home</a></li>
+                <li class="breadcrumb-item"><a href="/" class="text-decoration-none">Cats</a></li>
+                <li class="breadcrumb-item active" aria-current="page">@Model.Name</li>
+            </ol>
+        </nav>
+
+        <div class="row">
+            <!-- Main Image & Gallery Column -->
+            <div class="col-lg-8">
+                <!-- Main Image -->
+                <div class="main-image mb-4">
+                    <img src="@Model.ImageUrl" alt="@Model.Description" class="img-fluid w-100" style="height: 500px; object-fit: cover;">
+                </div>
+
+                <!-- Image Gallery -->
+                <div class="image-gallery mb-5">
+                    <h5 class="fw-bold mb-3 text-dark"><i class="fas fa-images me-2"></i>Gallery</h5>
+                    <div class="row g-2">
+                        <div class="col-3">
+                            <img src="@Model.ImageUrl" class="img-fluid rounded cursor-pointer" style="height: 100px; object-fit: cover;" onclick="changeMainImage(this.src)">
+                        </div>
+                        <!-- Add more gallery images here if available -->
+                        <div class="col-3">
+                            <div class="bg-light rounded d-flex align-items-center justify-content-center" style="height: 100px;">
+                                <i class="fas fa-plus text-muted fa-2x"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Information Tabs -->
+                <div class="detailed-info">
+                    <ul class="nav nav-pills detail-tabs mb-4" id="detailTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="about-tab" data-bs-toggle="pill" data-bs-target="#about" type="button" role="tab">
+                                <i class="fas fa-info-circle me-2"></i>About
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="health-tab" data-bs-toggle="pill" data-bs-target="#health" type="button" role="tab">
+                                <i class="fas fa-heartbeat me-2"></i>Health & Care
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="seller-tab" data-bs-toggle="pill" data-bs-target="#seller" type="button" role="tab">
+                                <i class="fas fa-user me-2"></i>Seller Info
+                            </button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id="detailTabsContent">
+                        <!-- About Tab -->
+                        <div class="tab-pane fade show active" id="about" role="tabpanel">
+                            <h4 class="fw-bold text-primary mb-4">About @Model.Name</h4>
+                            <p class="lead mb-4">@Model.Description</p>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-paw"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="fw-bold mb-1">Breed</h6>
+                                            <p class="mb-0 text-muted">@Model.Breed</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-birthday-cake"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="fw-bold mb-1">Age</h6>
+                                            <p class="mb-0 text-muted">@Model.Age years old</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-venus-mars"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="fw-bold mb-1">Gender</h6>
+                                            <p class="mb-0 text-muted">@Model.Gender</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-palette"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="fw-bold mb-1">Color</h6>
+                                            <p class="mb-0 text-muted">@Model.Color</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-calendar"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="fw-bold mb-1">Listed On</h6>
+                                            <p class="mb-0 text-muted">@Model.PostedDate.ToString("MMMM dd, yyyy")</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-home"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="fw-bold mb-1">Environment</h6>
+                                            <p class="mb-0 text-muted">Indoor-friendly, family-oriented</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Health & Care Tab -->
+                        <div class="tab-pane fade" id="health" role="tabpanel">
+                            <h4 class="fw-bold text-primary mb-4">Health & Care Information</h4>
+
+                            <div class="health-status mb-4">
+                                <h5 class="fw-bold mb-3">Health Status</h5>
+                                <div class="mb-3">
+                                    <span class="health-badge"><i class="fas fa-shield-alt me-1"></i> Fully Vaccinated</span>
+                                    <span class="health-badge"><i class="fas fa-stethoscope me-1"></i> Health Checked</span>
+                                    <span class="health-badge"><i class="fas fa-syringe me-1"></i> Dewormed</span>
+                                    <span class="health-badge"><i class="fas fa-cut me-1"></i> Neutered/Spayed</span>
+                                </div>
+                            </div>
+
+                            <div class="care-requirements">
+                                <h5 class="fw-bold mb-3">Care Requirements</h5>
+                                <div class="care-item">
+                                    <h6 class="fw-bold text-dark"><i class="fas fa-utensils me-2"></i>Diet & Nutrition</h6>
+                                    <p class="mb-0 text-muted">Requires high-quality dry and wet food twice daily. Prefers chicken-based formulas.</p>
+                                </div>
+                                <div class="care-item">
+                                    <h6 class="fw-bold text-dark"><i class="fas fa-home me-2"></i>Living Environment</h6>
+                                    <p class="mb-0 text-muted">Thrives in indoor environments. Needs scratching post, toys, and comfortable resting areas.</p>
+                                </div>
+                                <div class="care-item">
+                                    <h6 class="fw-bold text-dark"><i class="fas fa-hand-holding-medical me-2"></i>Grooming Needs</h6>
+                                    <p class="mb-0 text-muted">Regular brushing recommended. Nail trimming every 2-3 weeks.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Seller Info Tab -->
+                        <div class="tab-pane fade" id="seller" role="tabpanel">
+                            <h4 class="fw-bold text-primary mb-4">Seller Information</h4>
+
+                            <div class="seller-contact-card mb-4">
+                                <h5 class="fw-bold mb-3"><i class="fas fa-user-tie me-2"></i>@Model.SellerName</h5>
+                                <div class="contact-item">
+                                    <i class="fas fa-envelope"></i>
+                                    <div>
+                                        <small>Email</small>
+                                        <div class="fw-bold">@Model.SellerEmail</div>
+                                    </div>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-phone"></i>
+                                    <div>
+                                        <small>Phone</small>
+                                        <div class="fw-bold">@Model.SellerPhone</div>
+                                    </div>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <div>
+                                        <small>Location</small>
+                                        <div class="fw-bold">@Model.SellerAddress</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="seller-description">
+                                <h6 class="fw-bold text-dark mb-3">About the Seller</h6>
+                                <p class="text-muted">
+                                    Experienced cat breeder with over 5 years of experience. All cats are raised in loving home environments
+                                    with proper socialization and care. Health guarantees provided with all adoptions.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar with Quick Info & Actions -->
+            <div class="col-lg-4">
+                <div class="sticky-sidebar">
+                    <div class="info-card card">
+                        <div class="card-body p-4">
+                            <h2 class="fw-bold text-primary mb-3">@Model.Name</h2>
+
+                            <div class="price-section mb-4">
+                                <h3 class="text-success fw-bold">$@Model.Price.ToString("N2")</h3>
+                                <span class="badge bg-success fs-6 p-2">
+                                    <i class="fas fa-check-circle me-1"></i>Available for Adoption
+                                </span>
+                            </div>
+
+                            <div class="quick-info mb-4">
+                                <div class="info-item d-flex justify-content-between align-items-center py-2 border-bottom">
+                                    <span class="fw-medium text-muted">Breed:</span>
+                                    <span class="fw-bold text-dark">@Model.Breed</span>
+                                </div>
+                                <div class="info-item d-flex justify-content-between align-items-center py-2 border-bottom">
+                                    <span class="fw-medium text-muted">Age:</span>
+                                    <span class="fw-bold text-dark">@Model.Age years</span>
+                                </div>
+                                <div class="info-item d-flex justify-content-between align-items-center py-2 border-bottom">
+                                    <span class="fw-medium text-muted">Gender:</span>
+                                    <span class="fw-bold text-dark">@Model.Gender</span>
+                                </div>
+                                <div class="info-item d-flex justify-content-between align-items-center py-2 border-bottom">
+                                    <span class="fw-medium text-muted">Color:</span>
+                                    <span class="fw-bold text-dark">@Model.Color</span>
+                                </div>
+                                <div class="info-item d-flex justify-content-between align-items-center py-2">
+                                    <span class="fw-medium text-muted">Listed:</span>
+                                    <span class="fw-bold text-dark">@Model.PostedDate.ToString("MMM dd, yyyy")</span>
+                                </div>
+                            </div>
+
+                            <div class="action-buttons">
+                                <button class="btn btn-primary btn-lg w-100 mb-3" onclick="contactSeller()">
+                                    <i class="fas fa-phone me-2"></i>Contact Seller
+                                </button>
+                                <button class="btn btn-outline-primary w-100 mb-3" id="favoriteBtn">
+                                    <i class="far fa-heart me-2"></i>Add to Favorites
+                                </button>
+                                <button class="btn btn-outline-secondary w-100" onclick="shareCat()">
+                                    <i class="fas fa-share-alt me-2"></i>Share Profile
+                                </button>
+                            </div>
+
+                            <div class="safety-tips mt-4 p-3 bg-light rounded">
+                                <h6 class="fw-bold text-dark mb-2"><i class="fas fa-shield-alt me-2 text-primary"></i>Safety Tips</h6>
+                                <small class="text-muted">
+                                    • Meet in public places<br>
+                                    • Verify health documents<br>
+                                    • Never send payment in advance
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- JavaScript for Interactive Features -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Favorite button functionality
+        const favoriteBtn = document.getElementById('favoriteBtn');
+        if (favoriteBtn) {
+            favoriteBtn.addEventListener('click', function() {
+                const icon = this.querySelector('i');
+                if (icon.classList.contains('far')) {
+                    icon.classList.remove('far');
+                    icon.classList.add('fas', 'text-danger');
+                    this.classList.add('btn-danger');
+                    this.classList.remove('btn-outline-primary');
+                    this.innerHTML = '<i class="fas fa-heart me-2"></i>Added to Favorites';
+                    showToast('Added to favorites!', 'success');
+                } else {
+                    icon.classList.remove('fas', 'text-danger');
+                    icon.classList.add('far');
+                    this.classList.remove('btn-danger');
+                    this.classList.add('btn-outline-primary');
+                    this.innerHTML = '<i class="far fa-heart me-2"></i>Add to Favorites';
+                    showToast('Removed from favorites', 'info');
+                }
+            });
+        }
+
+        // Initialize tooltips
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    });
+
+    function changeMainImage(src) {
+        document.querySelector('.main-image img').src = src;
+    }
+
+    function contactSeller() {
+        const sellerName = '@Model.SellerName';
+        const sellerPhone = '@Model.SellerPhone';
+        const sellerEmail = '@Model.SellerEmail';
+
+        // You can implement a contact form modal or redirect to contact page
+        alert(`Contact ${sellerName} at:\nPhone: ${sellerPhone}\nEmail: ${sellerEmail}`);
+
+        // Alternative: Open email client
+        // window.location.href = `mailto:${sellerEmail}?subject=Inquiry about ${'@Model.Name'}`;
+    }
+
+    function shareCat() {
+        const catName = '@Model.Name';
+        const currentUrl = window.location.href;
+
+        if (navigator.share) {
+            navigator.share({
+                title: `Check out ${catName} on Bloggie`,
+                text: `Beautiful ${catName} is available for adoption!`,
+                url: currentUrl,
+            });
+        } else {
+            // Fallback: Copy to clipboard
+            navigator.clipboard.writeText(currentUrl).then(function() {
+                showToast('Link copied to clipboard!', 'success');
+            });
+        }
+    }
+
+    function showToast(message, type = 'info') {
+        // Simple toast notification
+        const toast = document.createElement('div');
+        toast.className = `alert alert-${type} position-fixed`;
+        toast.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 250px;';
+        toast.innerHTML = message;
+        document.body.appendChild(toast);
+
+        setTimeout(() => {
+            toast.remove();
+        }, 3000);
+    }
+</script>
